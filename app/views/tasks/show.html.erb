@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title"><%= @task.title %></h1>
+    <h4 class="card-subtitle mb-2 text-body-secondary"><%= @task.deadline %></h4>
+    <p class="card-text"><%= markdown(@task.description) %></p>
+    <%= link_to "Edit", edit_task_path(@task), class:"btn btn-primary" %>
+  </div>
+</div>

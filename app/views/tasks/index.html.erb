@@ -1,0 +1,50 @@
+<% if user_signed_in? %>
+  <div id="tasks">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @tasks.each do |task| %>
+        <% if task.user == current_user %>
+          <div class="col">
+            <% card_class = if task.is_completed
+              "border-success"
+            elsif not task.deadline
+              "border-secondary"
+            elsif DateTime.now >= task.deadline
+              "border-danger"
+            elsif (task.deadline - Time.now) < 1.day
+              "border-warning"
+            else
+              "border-secondary"
+            end %>
+            
+            <div class="card h-100 <%= card_class %>" style="border-width:2px;">
+              <a href="<%= task_path(task) %>" style="text-decoration: none; color: inherit;">
+                <div class="card-body">
+                  <h2 class="card-title"><%= task.title %></h2>
+                  <h6 class="card-subtitle mb-2 text-body-secondary"><%= task.deadline %></h6>
+                  <p class="card-text"><%= markdown(task.description) %></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="col">
+        <div class="card h-100 text-center border-primary" style="border-width:2px;">
+          <div class="card-body">
+            <h5 class="card-title">New Task</h5>
+            <% if @tasks.length() == 0 %>
+              <p class="card-text">You have not added any tasks yet</p>
+            <% else %>
+              <p class="card-text">Add a new task to your list</p>
+            <% end %>
+            <%= link_to "Add", new_task_path, class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% else %>
+  <p>You must be logged in to create a task.</p>
+<% end %>
