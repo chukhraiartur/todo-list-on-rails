@@ -1,24 +1,7 @@
-# README
+# To-Do List on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello, my name is Artur Chukhrai and I am new to Ruby.
 
-Things you may want to cover:
+This is my first Ruby on Rails project!
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It's a simple To-Do List where you can create your account and add tasks there. Tasks can be created and viewed in the Markdown format. This is what I consider a small feature of this project.
